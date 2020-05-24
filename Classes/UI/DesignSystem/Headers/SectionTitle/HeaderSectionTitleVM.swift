@@ -10,9 +10,7 @@ import Foundation
 import MagazineLayout
 
 struct HeaderSectionTitleVM: MagazineSupplementaryDataType {
-
     let heightMode: MagazineLayoutHeaderHeightMode = .static(height: 64)
-
     let title: String
     let subtitle: String
 
@@ -29,4 +27,3 @@ struct HeaderSectionTitleVM: MagazineSupplementaryDataType {
         return HeaderSectionTitleConfigurator(item: self)
     }
 }
-

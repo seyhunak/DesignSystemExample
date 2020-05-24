@@ -13,7 +13,6 @@ import RxFlow
 import MXParallaxHeader
 
 final class DestinationVC: Screen {
-
     private let bag = DisposeBag()
 
     override func viewDidLoad() {
@@ -23,7 +22,6 @@ final class DestinationVC: Screen {
 
     private func addHeaderView() {
         let headerView: HeaderDestination = HeaderDestination.viewFromXib()
-
         collectionView.parallaxHeader.view = headerView
         collectionView.parallaxHeader.height = HeaderDestination.height
         collectionView.parallaxHeader.minimumHeight = HeaderDestination.minimumHeight

@@ -30,7 +30,8 @@ class Screen: BaseMagazineLayoutVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.viewModel.sections.bind(to: self.sections).disposed(by: bag)
+        self.viewModel.sections.bind(
+            to: self.sections
+        ).disposed(by: bag)
     }
 }
