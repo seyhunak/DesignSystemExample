@@ -1,0 +1,67 @@
+{
+  "sections": {
+    "message": "Error",
+    "succeeded": true,
+    "data": {     
+        "title": "Indonesia, Bali",
+        "text": "Bali is an Indonesian island known for its forested volcanic mountains, iconic rice paddies, white beaches and coral reefs. The island is home to religious sites such as cliffside Uluwatu Temple. The island is also known for its yoga and meditation retreats.",
+        "columnItems": [
+          {
+            "imageUrl": "http://chililabs.io/images/opensource/ios_design_system/img_1.jpg",
+            "title": "Maldives",
+            "subtitle": "44 people visited"
+          },
+          {
+            "imageUrl": "http://chililabs.io/images/opensource/ios_design_system/img_2.jpg",
+            "title": "Egypt",
+            "subtitle": "12 people visited"
+          },
+          {
+            "imageUrl": "http://chililabs.io/images/opensource/ios_design_system/img_3.jpg",
+            "title": "Bali",
+            "subtitle": "34 people visited"
+          }
+        ],
+        "rowItems": [
+          {
+            "headline": "Explore new places and meet new people",
+            "caption": "Most popular destinations"
+          }
+        ],
+        "layoutItems": [
+          {
+            "departureTime": "05:00",
+            "departureAirport": "Turkey (TR)",
+            "arrivalTime": "20:00",
+            "arrivalAirport": "Tokyo (HND)"
+          },
+          {
+            "departureTime": "06:00",
+            "departureAirport": "Tokyo (HND)",
+            "arrivalTime": "20:00",
+            "arrivalAirport": "Turkey (TR)"
+          },
+          {
+            "departureTime": "07:00",
+            "departureAirport": "Riga (RIX)",
+            "arrivalTime": "20:00",
+            "arrivalAirport": "London (HND)"
+          }
+        ],
+        "cardItems": [
+          {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Uluwatu%40bali.jpg"
+          },
+          {
+            "url": "https://p1.pxfuel.com/preview/458/393/320/bali-tour-packages-book-bali-honeymoon-packages-bali-holiday-packages-best-travel-agency-in-delhi.jpg"
+          },
+          {
+            "url": "https://cdn.pixabay.com/photo/2017/06/07/05/10/ubud-bali-2379365_960_720.jpg"
+          },
+          {
+            "url": "https://dimg04.c-ctrip.com/images/200t0x000000kx593CDF5_R_550_412_R5_Q70_D.jpg"
+          }
+        ]
+    }
+  }
+}
