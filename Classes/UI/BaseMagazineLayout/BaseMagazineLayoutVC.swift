@@ -28,13 +28,10 @@ class BaseMagazineLayoutVC: UIViewController, PBaseMagazineLayoutVC {
 
     fileprivate let _sections = BehaviorRelay(value: [MagazineLayoutSection]())
 
-    //published when cell got selected
     private let selectPublisher = PublishRelay<CellConfigurator>()
     private lazy var cellsRegistrator = CollectionViewCellsRegistrator(collectionView: self.collectionView)
-
     private let bag = DisposeBag()
 
-    // Collection view
     lazy var collectionView: UICollectionView = {
         let layout = MagazineLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -82,7 +79,7 @@ extension BaseMagazineLayoutVC: UICollectionViewDelegateMagazineLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForFooterInSectionAtIndex index: Int) -> MagazineLayoutFooterVisibilityMode {
         return self._sections.value[index].footer.visibilityMode
     }
-    // swiftlint:disable line_length
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForBackgroundInSectionAtIndex index: Int) -> MagazineLayoutBackgroundVisibilityMode {
         return self._sections.value[index].background.visibilityMode
     }
@@ -103,6 +100,7 @@ extension BaseMagazineLayoutVC: UICollectionViewDelegateMagazineLayout {
         return self._sections.value[index].itemsInset
     }
 }
+
 extension BaseMagazineLayoutVC: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {

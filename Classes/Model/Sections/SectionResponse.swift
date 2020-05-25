@@ -9,7 +9,7 @@
 import Foundation
 
 struct Section: Codable {
-    let title, text: String
+    let title, subtitle, text: String
     let columnItems: [ColumnItem]
     let rowItems: [RowItem]
     let layoutItems: [LayoutItem]

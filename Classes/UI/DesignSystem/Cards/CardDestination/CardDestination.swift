@@ -11,6 +11,7 @@ import MagazineLayout
 import Kingfisher
 
 typealias CardDestinationConfigurator = MagazineCellConfigurator<CardDestinationVM, CardDestination>
+
 final class CardDestination: UICollectionViewCell, ConfigurableCell {
 
     private let imageView: UIImageView = {

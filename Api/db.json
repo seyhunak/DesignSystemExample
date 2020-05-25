@@ -4,8 +4,24 @@
     "succeeded": true,
     "data": {     
         "title": "Indonesia, Bali",
+        "subtitle": "About Bali",
         "text": "Bali is an Indonesian island known for its forested volcanic mountains, iconic rice paddies, white beaches and coral reefs. The island is home to religious sites such as cliffside Uluwatu Temple. The island is also known for its yoga and meditation retreats.",
         "columnItems": [
+          {
+            "imageUrl": "http://chililabs.io/images/opensource/ios_design_system/img_1.jpg",
+            "title": "Maldives",
+            "subtitle": "44 people visited"
+          },
+          {
+            "imageUrl": "http://chililabs.io/images/opensource/ios_design_system/img_2.jpg",
+            "title": "Egypt",
+            "subtitle": "12 people visited"
+          },
+          {
+            "imageUrl": "http://chililabs.io/images/opensource/ios_design_system/img_3.jpg",
+            "title": "Bali",
+            "subtitle": "34 people visited"
+          },
           {
             "imageUrl": "http://chililabs.io/images/opensource/ios_design_system/img_1.jpg",
             "title": "Maldives",

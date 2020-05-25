@@ -13,17 +13,13 @@ import RxSwift
 import RxCocoa
 
 class CardDestinationVM: MagazineCellDataType, StepSupportable {
-
     var sizeMode: MagazineLayoutItemSizeMode {
-        return MagazineLayoutItemSizeMode(widthMode: .thirdWidth,
-                                          heightMode: .static(height: 160))
+        return MagazineLayoutItemSizeMode(widthMode: .thirdWidth, heightMode: .static(height: 160))
     }
 
     let imageUrl: String
     let title: String
     let subtitle: String
-
-    //StepSupportable
     let defaultStep: Step
     let steps = PublishRelay<Step>()
 

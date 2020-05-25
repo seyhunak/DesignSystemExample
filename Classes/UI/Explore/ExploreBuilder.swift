@@ -12,50 +12,76 @@ import RxCocoa
 import RxFlow
 
 final class ExploreBuilder {
-    private var sectionItems: [MagazineLayoutSection] = []
+    static let shared = ExploreBuilder()
     private let bag = DisposeBag()
     let steps = PublishRelay<Step>()
 
+    private var sectionItems: [MagazineLayoutSection] = []
+    public var section: Section?
+
     public func build(section: Section) -> [MagazineLayoutSection] {
-         let header = HeaderSectionTitleVM(title: "Last visited", subtitle: "Your last visited destinations")
-         let destinationsLayout: [CardDestinationVM] = section.columnItems.map { (item)  in
-             return CardDestinationVM(
-              imageUrl: item.imageUrl,
-              title: item.title,
-              subtitle: item.subtitle,
-              step: FlowStep.Explore.page)
-         }
+        self.section = section
+        sectionItems.append(headerLayoutVms)
+        sectionItems.append(cardLayoutVms)
+        sectionItems.append(rowLayoutVms)
+        return sectionItems
+    }
+}
 
-         destinationsLayout.forEach {
-            $0.steps.bind(to: self.steps).disposed(by: bag)
-         }
+extension ExploreBuilder {
+    private var headerVms: HeaderSectionTitleVM {
+        return HeaderSectionTitleVM(title: self.section?.title ?? "", subtitle: self.section?.subtitle ?? "")
+    }
 
-         let headerLayout = MagazineLayoutSection(items: [
-                            RowHeadline1VM(title: section.title).configurator(),
-                            RowCaptionVM(title: section.title).configurator()
-         ], sectionInset: UIEdgeInsets(top: 16, left: 32, bottom: 16, right: 16))
-         sectionItems.append(headerLayout)
+    private var headerLayoutVms: MagazineLayoutSection {
+        return MagazineLayoutSection(items: [
+            RowHeadlineVM(title: self.section?.title ?? "").configurator(),
+            RowCaptionVM(title: self.section?.title ?? "").configurator()
+        ], sectionInset: UIEdgeInsets(top: 16, left: 32, bottom: 16, right: 16))
+    }
 
-         let cardLayout = MagazineLayoutSection(items: [
-             RowHorizontalCardsCollectionVM(items: destinationsLayout,
-                                                           itemWidth: 136,
-                                                           itemHeight: 224,
-                                                           itemsSpacing: 8).configurator()
-         ], sectionInset: UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0))
-         sectionItems.append(cardLayout)
+    private var rowLayoutVms: MagazineLayoutSection {
+        return MagazineLayoutSection(items: layoutItemsVms,
+                                     header: .init(item: headerVms.configurator(), visibilityMode: .visible(heightMode:  headerVms.heightMode)),
+                                     sectionInset: UIEdgeInsets(top: 24, left: 32, bottom: 32, right: 16))
+    }
 
-         let layoutItems: [CellConfigurator] = section.layoutItems.map { (item) in
-             return RowFlightInfoVM(info: FlightInfo(departureTime: item.departureTime,
-                                              departureAirport: item.departureAirport,
-                                              arrivalTime: item.arrivalTime,
-                                              arrivalAirport: item.arrivalAirport)).configurator()
+    private var cardLayoutVms: MagazineLayoutSection {
+        return MagazineLayoutSection(items: [
+           RowHorizontalCardsCollectionVM(items: destinationsVms,
+                                          itemWidth: 136,
+                                          itemHeight: 224,
+                                          itemsSpacing: 8).configurator()
+        ], sectionInset: UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0))
+    }
 
-         }
+    private var cardItemsVms: MagazineLayoutSection {
+        return MagazineLayoutSection(items: [
+           RowHorizontalCardsCollectionVM(items: destinationsVms,
+                                          itemWidth: 136,
+                                          itemHeight: 224,
+                                          itemsSpacing: 8).configurator()
+        ], sectionInset: UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0))
+    }
 
-         let rowLayout = MagazineLayoutSection(items: layoutItems,
-                               header: .init(item: header.configurator(), visibilityMode: .visible(heightMode: header.heightMode)),
-                               sectionInset: UIEdgeInsets(top: 24, left: 32, bottom: 32, right: 16))
-         sectionItems.append(rowLayout)
-         return sectionItems
+    private var layoutItemsVms: [CellConfigurator] {
+        guard let section = self.section else { return [] }
+        return section.layoutItems.map { (item) in
+            return RowFlightInfoVM(info: FlightInfo(departureTime: item.departureTime,
+                                                    departureAirport: item.departureAirport,
+                                                    arrivalTime: item.arrivalTime,
+                                                    arrivalAirport: item.arrivalAirport),
+                                                    step: FlowStep.Explore.page).configurator()
+        }
+    }
+
+    public var destinationsVms: [CardDestinationVM] {
+        return self.section?.columnItems.map { (item)  in
+            CardDestinationVM(
+             imageUrl: item.imageUrl,
+             title: item.title,
+             subtitle: item.subtitle,
+             step: FlowStep.Explore.page)
+        } ?? []
     }
 }

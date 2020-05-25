@@ -15,12 +15,14 @@ import RxCocoa
 struct FlightInfo: Hashable {
     let departureTime: String
     let departureAirport: String
-
     let arrivalTime: String
     let arrivalAirport: String
 }
 
-struct RowFlightInfoVM: MagazineCellDataType {
+struct RowFlightInfoVM: MagazineCellDataType, StepSupportable {
+    
+    let defaultStep: Step
+    let steps = PublishRelay<Step>()
 
     var sizeMode: MagazineLayoutItemSizeMode {
         return MagazineLayoutItemSizeMode(widthMode: .fullWidth(respectsHorizontalInsets: true),
@@ -29,8 +31,9 @@ struct RowFlightInfoVM: MagazineCellDataType {
 
     let flightInfo: FlightInfo
 
-    init(info: FlightInfo) {
+    init(info: FlightInfo, step: Step) {
         self.flightInfo = info
+        self.defaultStep = step
     }
 
     var diffHash: Int {
@@ -42,7 +45,6 @@ struct RowFlightInfoVM: MagazineCellDataType {
     }
 
     func didSelect() {
-        //
+        self.steps.accept(defaultStep)
     }
 }
-

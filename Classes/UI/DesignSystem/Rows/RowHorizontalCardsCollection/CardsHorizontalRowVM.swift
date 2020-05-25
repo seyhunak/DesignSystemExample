@@ -45,7 +45,7 @@ final class RowHorizontalCardsCollectionVM: MagazineCellDataType, Stepper {
     }
 
     func didSelect() {
-        //do nothing as this cell is just a container
+
     }
 
     func configurator() -> CellConfigurator {

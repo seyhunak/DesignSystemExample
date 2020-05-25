@@ -10,8 +10,8 @@ import UIKit
 import MagazineLayout
 
 typealias CardPhotoThumbnailConfigurator = MagazineCellConfigurator<CardPhotoThumbnailVM, CardPhotoThumbnail>
-final class CardPhotoThumbnail: UICollectionViewCell, ConfigurableCell {
 
+final class CardPhotoThumbnail: UICollectionViewCell, ConfigurableCell {
     private let imageView: UIImageView = {
         let v = UIImageView()
         v.contentMode = .scaleAspectFill

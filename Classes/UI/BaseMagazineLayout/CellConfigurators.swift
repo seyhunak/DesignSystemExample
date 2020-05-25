@@ -9,8 +9,6 @@
 import UIKit
 import MagazineLayout
 
-//Cell configurators
-
 protocol Diffable {
     var diffHash: Int { get }
 }
@@ -19,7 +17,6 @@ protocol CellSizable: GenericCell {
     var sizeMode: MagazineLayoutItemSizeMode { get }
 }
 
-//means that cell can be selected
 protocol SelectableData {
     func didSelect()
 }
@@ -39,7 +36,6 @@ protocol ConfigurableCell: GenericCell, Reusable {
     func configure(item: DataType)
 }
 
-//defines that object should return its configurator
 protocol CellConfigurable {
     func configurator() -> CellConfigurator
 }
@@ -79,7 +75,6 @@ final class MagazineCellConfigurator<DataType: MagazineCellDataType, CellType: C
     }
 }
 
-//Reusable cells like headers or footers
 protocol SupplementaryCellSizable: GenericCell {
     var heightMode: MagazineLayoutHeaderHeightMode { get }
 }

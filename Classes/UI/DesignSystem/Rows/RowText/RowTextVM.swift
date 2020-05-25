@@ -34,7 +34,7 @@ struct RowTextVM: MagazineCellDataType {
     }
 
     func didSelect() {
-        //
+    
     }
 }
 

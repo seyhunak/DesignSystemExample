@@ -10,8 +10,8 @@ import UIKit
 import MagazineLayout
 
 typealias RowFlightInfoConfigurator = MagazineCellConfigurator<RowFlightInfoVM, RowFlightInfo>
-final class RowFlightInfo: MagazineLayoutCollectionViewCell, ConfigurableCell {
 
+final class RowFlightInfo: MagazineLayoutCollectionViewCell, ConfigurableCell {
     static var nib: UINib? { return UINib(nibName: self.reuseIdentifier, bundle: nil) }
 
     @IBOutlet weak var departureTimeLabel: UILabel!
@@ -22,7 +22,6 @@ final class RowFlightInfo: MagazineLayoutCollectionViewCell, ConfigurableCell {
     func configure(item: RowFlightInfoVM) {
         self.departureTimeLabel.styledText = item.flightInfo.departureTime
         self.departureDestinationLabel.styledText = item.flightInfo.departureAirport
-
         self.arrivalTimeLabel.styledText = item.flightInfo.arrivalTime
         self.arrivalDestinationLabel.styledText = item.flightInfo.arrivalAirport
     }

@@ -39,14 +39,14 @@ final class ExploreFlow: Flow {
     }
 
     private func navigateToDashboard() -> FlowContributors {
-        let vm = ExploreVM()
+        let vm = ExploreVM(sectionItems: ExploreDataSource().sectionItems)
         let vc = Screen(viewModel: vm)
         self.rootViewController.viewControllers = [vc]
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vm))
     }
 
     private func navigateToPage() -> FlowContributors {
-        let vm = DestinationVM()
+        let vm = DestinationVM(sectionItems: DestinationDataSource().sectionItems)
         let vc = DestinationVC(viewModel: vm)
         self.rootViewController.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vm))
