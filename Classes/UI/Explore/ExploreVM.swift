@@ -19,8 +19,8 @@ final class ExploreVM: SectionedViewModel {
     private var repository: SectionRepository = SectionRepositoryImpl()
     private var builder: ExploreBuilder = ExploreBuilder()
 
-    init(sectionItems: [MagazineLayoutSection]) {
+    init(sectionItems: [MagazineLayoutSection], destinations: [CardDestinationVM]) {
         $sections.accept(sectionItems)
-        ExploreBuilder.shared.destinationsVms.forEach { $0.steps.bind(to: self.steps).disposed(by: bag) }
+        destinations.forEach { $0.steps.bind(to: self.steps).disposed(by: bag) }
     }
 }

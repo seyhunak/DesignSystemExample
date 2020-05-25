@@ -36,14 +36,8 @@ extension ExploreBuilder {
     private var headerLayoutVms: MagazineLayoutSection {
         return MagazineLayoutSection(items: [
             RowHeadlineVM(title: self.section?.title ?? "").configurator(),
-            RowCaptionVM(title: self.section?.title ?? "").configurator()
+            RowCaptionVM(title: self.section?.text ?? "").configurator()
         ], sectionInset: UIEdgeInsets(top: 16, left: 32, bottom: 16, right: 16))
-    }
-
-    private var rowLayoutVms: MagazineLayoutSection {
-        return MagazineLayoutSection(items: layoutItemsVms,
-                                     header: .init(item: headerVms.configurator(), visibilityMode: .visible(heightMode:  headerVms.heightMode)),
-                                     sectionInset: UIEdgeInsets(top: 24, left: 32, bottom: 32, right: 16))
     }
 
     private var cardLayoutVms: MagazineLayoutSection {
@@ -55,13 +49,11 @@ extension ExploreBuilder {
         ], sectionInset: UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0))
     }
 
-    private var cardItemsVms: MagazineLayoutSection {
-        return MagazineLayoutSection(items: [
-           RowHorizontalCardsCollectionVM(items: destinationsVms,
-                                          itemWidth: 136,
-                                          itemHeight: 224,
-                                          itemsSpacing: 8).configurator()
-        ], sectionInset: UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0))
+
+    private var rowLayoutVms: MagazineLayoutSection {
+        return MagazineLayoutSection(items: layoutItemsVms,
+                                     header: .init(item: headerVms.configurator(), visibilityMode: .visible(heightMode:  headerVms.heightMode)),
+                                     sectionInset: UIEdgeInsets(top: 24, left: 32, bottom: 32, right: 16))
     }
 
     private var layoutItemsVms: [CellConfigurator] {

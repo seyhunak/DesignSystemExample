@@ -15,6 +15,7 @@ final class ExploreDataSource {
     private let bag = DisposeBag()
     private var repository: SectionRepository = SectionRepositoryImpl()
     public var sectionItems: [MagazineLayoutSection] = []
+    public var destinations: [CardDestinationVM] = []
 
     init() {
         let group = DispatchGroup()
@@ -23,6 +24,7 @@ final class ExploreDataSource {
          .subscribe(onNext: { (result) in
              guard result.succeeded, let data = result.data else { return }
              self.sectionItems = ExploreBuilder.shared.build(section: data)
+             self.destinations = ExploreBuilder.shared.destinationsVms
              group.leave()
          }, onError: { (error) in
         }).disposed(by: self.bag)
